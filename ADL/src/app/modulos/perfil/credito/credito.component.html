@@ -1,0 +1,66 @@
+<div class="col-md-12" *ngIf="activarCredito">
+    <h3 class="card-title">{{'CREDITO.PRODUCTO_TITULO' | translate}}</h3>
+</div>
+<div class="col-md-4" *ngFor="let credito of creditos">
+    <div class="card card-chart">
+        <div class="col-md-12">
+            <img class="img-raised credito-img" src="../../../../assets/img/logos/credito.png" alt="">
+        </div>
+
+        <div class="col-md-12 p-4">
+            <a (click)="verDetalle(credito)" class="cursor">{{'VER_DETALLE' | translate}} </a>
+        </div>
+        <div class="p-4">
+            <h4 class="card-title">{{'CREDITO.PRODUCTO_SUB_TITULO' | translate}}</h4>
+            Nro. {{credito.accountInformation.accountidentifier}}
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">{{'CREDITO.DESCRIPCION_X_PAGAR' | translate}}</h4>
+            <p class="card-category">
+                <p class="card-category">
+                    {{credito.productAccountBalances.saldo_pendiente_pago.amount | currency}}</p>
+        </div>
+        <div class="card-footer">
+            <div class="stats">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #modalDetalle let-e="close">
+    <div class="modal-header">
+        <h4 class="modal-title">
+            <div class="col-md-12">
+                <img class="img-raised img-modal" src="../../../../assets/img/logos/credito.png" alt="">
+            </div>
+        </h4>
+        <button type="button" class="close" aria-label="Close" (click)="e('Cerrar')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    <div class="modal-body">
+        <div class="p-4">
+            <h4 class="card-title">{{'CREDITO.PRODUCTO_SUB_TITULO' | translate}}</h4>
+            Nro. {{detalleCreditoModal.accountInformation.accountidentifier}}
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">{{'CREDITO.DESCRIPCION_X_PAGAR' | translate}} </h4>
+            <p class="card-category">
+                {{detalleCreditoModal.productAccountBalances.saldo_pendiente_pago.amount | currency}}</p>
+
+
+            <h4 class="card-title">{{'CREDITO.DESCRIPCION_ESTADO' | translate}}</h4>
+            <p class="card-category" *ngIf="detalleCreditoModal.locked">
+                {{'CREDITO.DESCRIPCION_ACTIVO' | translate}}</p>
+            <p *ngIf="!detalleCreditoModal.locked" class="card-category">
+                {{'CREDITO.DESCRIPCION_INACTIVO' | translate}}</p>
+
+
+
+
+        </div>
+    </div>
+
+</ng-template>

@@ -1,0 +1,108 @@
+<div class="col-md-12" *ngIf="activarTarjeta">
+    <h3 class="card-title">{{'TARJETA_CREDITO.PRODUCTO_TITULO' | translate}}</h3>
+</div>
+<div class="col-md-4" *ngFor="let tarjetasCredito of tarjetasCreditos">
+    <div class="card card-chart">
+        <div class="col-md-12" *ngIf="tarjetasCredito.accountInformation.accountidentifier.slice(0, 1) === '4'">
+            <img class=" img-raised tc-img " src="../../../../assets/img/logos/VISA.png " alt=" ">
+        </div>
+        <div class="col-md-12 " *ngIf="tarjetasCredito.accountInformation.accountidentifier.slice(0, 1)==='5' ">
+            <img class="img-raised tc-img " src="../../../../assets/img/logos/masterCard.png " alt=" ">
+        </div>
+        <div class="col-md-12 p-4">
+            <a (click)="verDetalle(tarjetasCredito)" class="cursor">{{'VER_DETALLE' | translate}} </a>
+        </div>
+
+        <div class="p-4 ">
+            <h4 class="card-title ">{{'TARJETA_CREDITO.PRODUCTO_SUB_TITULO' | translate}}</h4>
+            Nro. {{enmascara.ofuscarTC(tarjetasCredito.accountInformation.accountidentifier)}}
+        </div>
+
+        <div class="card-body">
+            <h4 class="card-title ">{{'TARJETA_CREDITO.DESCRIPCION_SALDO_ACTUAL' | translate}}</h4>
+            <p class="card-category ">
+                {{tarjetasCredito.productAccountBalances.cupo_total.amount | currency}}</p>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title ">{{'TARJETA_CREDITO.DESCRIPCION_CUPO' | translate}}</h4>
+            <p class="card-category ">
+                {{tarjetasCredito.productAccountBalances.saldo_actual.amount | currency}}</p>
+        </div>
+        <div class="card-footer ">
+            <div class="stats" *ngIf="tarjetasCredito.payDate !== ''">
+                <div class="col-md-12">
+                    <h5 class="card-title"> {{'TARJETA_CREDITO.DESCRIPCION_FECHA_PAGO' | translate}}</h5>
+                    <p class="card-category">
+                        {{tarjetasCredito.payDate | date}}
+                        <div class="col-md-12">
+                            <button type="button" (click)="pagarTargeta(tarjetasCredito)" class="btn btn-primary">Pagar</button>
+                        </div>
+                </div>
+            </div>
+            <div class="stats" *ngIf="tarjetasCredito.payDate === ''">
+                <div class="col-md-12">
+                    <h5 class="card-title"> {{'TARJETA_CREDITO.DESCRIPCION_TOTAL_GASTADO' | translate}}</h5>
+                    <p class="card-category">
+                        {{tarjetasCredito.productAccountBalances.pago_total_pesos.amount | currency}}
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <progress value="tarjetasCredito.productAccountBalances.saldo_actual.amount.toString().slice(0, 3).toString()" max="tarjetasCredito.productAccountBalances.cupo_total.amount.toString().slice(0, 3).toString()"></progress>
+                            </div>
+                            <i class="material-icons">access_time</i> {{'TARJETA_CREDITO.DESCRIPCION_FECHA_VENCIMIENTO' | translate}} {{tarjetasCredito.dueDate | date}}
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #modalDetalle let-e="close">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <div class="col-md-12" *ngIf="detalleTCModal.accountInformation.accountidentifier.slice(0, 1) === '4'">
+                        <img class=" img-raised img-modal" src="../../../../assets/img/logos/VISA.png " alt=" ">
+                    </div>
+                    <div class="col-md-12 " *ngIf="detalleTCModal.accountInformation.accountidentifier.slice(0, 1)==='5' ">
+                        <img class="img-raised img-modal " src="../../../../assets/img/logos/masterCard.png " alt=" ">
+                    </div>
+                </h4>
+                <button type="button" class="close" aria-label="Close" (click)="e('Cerrar')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <div class="p-4">
+                    <h4 class="card-title">{{'TARJETA_CREDITO.PRODUCTO_SUB_TITULO' | translate}}</h4>
+                    Nro. {{enmascara.ofuscarTC(detalleTCModal.accountInformation.accountidentifier)}}
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{'TARJETA_CREDITO.DESCRIPCION_PAGO_PESOS' | translate}} </h4>
+                    <p class="card-category">
+                        {{detalleTCModal.productAccountBalances.pago_total_pesos.amount | currency}}</p>
+                    <h4 class="card-title">{{'TARJETA_CREDITO.DESCRIPCION_CUPO_DISP_AVANCES' | translate}}</h4>
+                    <p class="card-category">
+                        {{detalleTCModal.productAccountBalances.cupo_disponible_avances_pesos.amount | currency}}</p>
+
+                    <h4 class="card-title">{{'TARJETA_CREDITO.DESCRIPCION_SALDO_MORA_PESOS' | translate}}</h4>
+                    <p class="card-category">
+                        {{detalleTCModal.productAccountBalances.saldo_mora_pesos.amount | currency}}</p>
+
+                    <h4 class="card-title">{{'TARJETA_CREDITO.DESCRIPCION_SALDO_ACTUAL' | translate}}</h4>
+                    <p class="card-category">
+                        {{detalleTCModal.productAccountBalances.saldo_actual.amount | currency}}</p>
+
+                    <h4 class="card-title">{{'TARJETA_CREDITO.DESCRIPCION_CUPO_COMPRAS_PESOS' | translate}}</h4>
+                    <p class="card-category">
+                        {{detalleTCModal.productAccountBalances.cupo_disponible_compras_pesos.amount | currency }} </p>
+
+                    <h4 class="card-title">{{'TARJETA_CREDITO.DESCRIPCION_VALOR_PAGO_MINIMO' | translate}}</h4>
+                    <p class="card-category">
+                        {{detalleTCModal.productAccountBalances.valor_pago_minimo.amount | currency }} </p>
+
+                    <h4 class="card-title">{{'TARJETA_CREDITO.DESCRIPCION_CUPO_TOTAL' | translate}}</h4>
+                    <p class="card-category">
+                        {{detalleTCModal.productAccountBalances.cupo_total.amount | currency}} </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                {{'TARJETA_CREDITO.DESCRIPCION_FECHA_VENCIMIENTO' | translate}} {{detalleTCModal.dueDate | date}}
+            </div>
+        </ng-template>

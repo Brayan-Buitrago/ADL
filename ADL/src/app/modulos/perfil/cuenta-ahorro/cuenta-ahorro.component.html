@@ -1,0 +1,82 @@
+<div class="col-md-12 " *ngIf="activarCuentaAhorro">
+    <h3 class="card-title ">{{'CUENTA_AHORRO.PRODUCTO_TITULO' | translate}}</h3>
+</div>
+<div class="col-md-4 " *ngFor="let cuentasAhorro of cuentasAhorros">
+    <div class="card card-chart ">
+        <div class="col-md-12 ">
+            <img class="img-raised ca-img " src="../../../../assets/img/logos/ahorros.png" alt=" ">
+        </div>
+        <div class="col-md-12 p-4">
+            <a (click)="verDetalle(cuentasAhorro)" class="cursor">{{'VER_DETALLE' | translate}} </a>
+        </div>
+        <div class="p-4 ">
+            <h4 class="card-title ">{{'CUENTA_AHORRO.PRODUCTO_SUB_TITULO' | translate}}</h4>
+            Nro. {{cuentasAhorro.accountInformation.accountidentifier}}
+        </div>
+        <div class="card-body ">
+            <h4 class="card-title ">{{'CUENTA_AHORRO.DESCRIPCION_SALDO_DISPONIBLE' | translate}}</h4>
+            <p class="card-category ">
+                {{cuentasAhorro.productAccountBalances.saldo_disponible.amount | currency}}</p>
+        </div>
+        <div class="card-footer ">
+            <div class="stats ">
+                <i class="material-icons ">access_time</i> {{'CUENTA_AHORRO.DESCRIPCION_FECHA_VENCIMIENTO' | translate}} {{cuentasAhorro.dueDate | date}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #modalDetalle let-e="close">
+    <div class="modal-header">
+        <h4 class="modal-title">
+            <div class="col-md-12">
+                <img class="img-raised img-modal" src="../../../../assets/img/logos/ahorros.png" alt="">
+            </div>
+        </h4>
+        <button type="button" class="close" aria-label="Close" (click)="e('Cerrar')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    <div class="modal-body">
+        <div class="p-4">
+            <h4 class="card-title">{{'CUENTA_AHORRO.PRODUCTO_SUB_TITULO' | translate}}</h4>
+            Nro. {{detalleCAhorrosModal.accountInformation.accountidentifier}}
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">{{'CUENTA_AHORRO.DESCRIPCION_SALDO_CANJE' | translate}} </h4>
+            <p class="card-category">
+                {{detalleCAhorrosModal.productAccountBalances.saldo_canje.amount | currency}}</p>
+
+
+
+            <h4 class="card-title">{{'CUENTA_AHORRO.DESCRIPCION_SALDO_DISPONIBLE' | translate}}</h4>
+            <p class="card-category">
+                {{detalleCAhorrosModal.productAccountBalances.saldo_disponible.amount}}</p>
+
+
+            <h4 class="card-title">{{'CUENTA_AHORRO.DESCRIPCION_CANJE_48' | translate}}</h4>
+            <p class="card-category">
+                {{detalleCAhorrosModal.productAccountBalances.saldo_canje_48_horas.amount | currency }} </p>
+
+            <h4 class="card-title">{{'CUENTA_AHORRO.DESCRIPCION_CANJE_72' | translate}}</h4>
+            <p class="card-category">
+                {{detalleCAhorrosModal.productAccountBalances.saldo_canje_72_horas.amount | currency}} </p>
+
+            <h4 class="card-title">{{'CUENTA_AHORRO.DESCRIPCION_CANJE_24' | translate}}</h4>
+            <p class="card-category">
+                {{detalleCAhorrosModal.productAccountBalances.saldo_canje_24_horas.amount | currency}} </p>
+
+            <h4 class="card-title">{{'CUENTA_AHORRO.DESCRIPCION_SALDO_AYER' | translate}}</h4>
+            <p class="card-category">
+                {{detalleCAhorrosModal.productAccountBalances.saldo_ayer.amount | currency}} </p>
+
+            <h4 class="card-title">{{'CUENTA_AHORRO.DESCRIPCION_SALDO_ACTUAL' | translate}}</h4>
+            <p class="card-category">
+                {{detalleCAhorrosModal.productAccountBalances.saldo_actual.amount | currency}} </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        {{'CUENTA_AHORRO.DESCRIPCION_FECHA_VENCIMIENTO' | translate}} {{detalleCAhorrosModal.dueDate | date}}
+    </div>
+</ng-template>

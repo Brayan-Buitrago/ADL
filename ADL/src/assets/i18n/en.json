@@ -1,0 +1,73 @@
+{
+    "CDT": {
+        "PRODUCTO_TITULO": "CDT",
+        "PRODUCTO_SUB_TITULO": "CDT",
+        "DESCRIPCION_VALOR": "Valor Invertido",
+        "DESCRIPCION_PLAZO": "Plazo",
+        "DESCRIPCION_FECHA_VENCIMIENTO": " Fecha vencimiento :",
+        "DESCRIPCION_UNIDAD": "días",
+        "DESCRIPCION_SALDO_PENDIENTE": "Saldo Pendiente",
+        "DESCRIPCION_TASA": "Tasa Nominal",
+        "DESCRIPCION_INTERES": "Interés Causado"
+    },
+    "CREDITO": {
+        "PRODUCTO_TITULO": "Créditos",
+        "PRODUCTO_SUB_TITULO": "Crédito",
+        "DESCRIPCION_X_PAGAR": "Te queda por pagar",
+        "DESCRIPCION_ESTADO": "Estado",
+        "DESCRIPCION_ACTIVO": "Activo",
+        "DESCRIPCION_INACTIVO": "Deshabilitado"
+
+    },
+    "CUENTA_AHORRO": {
+        "PRODUCTO_TITULO": "Cuentas de Ahorros",
+        "PRODUCTO_SUB_TITULO": "Cuenta de Ahorro",
+        "DESCRIPCION_SALDO_DISPONIBLE": "Saldo disponible",
+        "DESCRIPCION_SALDO_CANJE": "Saldo en canje",
+        "DESCRIPCION_CANJE_48": "Saldo en canje en 48 horas",
+        "DESCRIPCION_CANJE_72": "Saldo en canje en 72 horas",
+        "DESCRIPCION_CANJE_24": "Saldo en canje en 24 horas",
+        "DESCRIPCION_SALDO_AYER": "Saldo dia anterior",
+        "DESCRIPCION_SALDO_ACTUAL": "Saldo actual",
+        "DESCRIPCION_FECHA_VENCIMIENTO": "Fecha vencimiento"
+    },
+    "CUENTA_CORRIENTE": {
+        "PRODUCTO_TITULO": "Cuentas Corrientes",
+        "PRODUCTO_SUB_TITULO": "Cuenta Corriente",
+        "DESCRIPCION_SALDO": "Saldo disponible",
+        "DESCRIPCION_SOBREGIRO": "En sobregiro",
+        "DESCRIPCION_DIAS_SOBREGIRO": "Días en sobregiro:",
+        "DESCRIPCION_SALDO_DISPONIBLE": "Saldo disponible",
+        "DESCRIPCION_SALDO_CANJE": "Saldo en canje",
+        "DESCRIPCION_CUPO_APROBADO_REMESAS": "Cupo aprobado de remesas",
+        "DESCRIPCION_CUPO_APROBADO_SOBREGIRO": "Cupo aprobado de sobregiro",
+        "DESCRIPCION_SALDO_DIS_SOBREGIRO": "Saldo disponible de sobregiro",
+        "DESCRIPCION_CANJE_48": "Saldo en canje en 48 horas",
+        "DESCRIPCION_CANJE_72": "Saldo en canje en 72 horas",
+        "DESCRIPCION_CANJE_24": "Saldo en canje en 24 horas",
+        "DESCRIPCION_SALDO_AYER": "Saldo dia anterior",
+        "DESCRIPCION_SALDO_ACTUAL": "Saldo actual",
+        "DESCRIPCION_FECHA_VENCIMIENTO": "Fecha vencimiento"
+    },
+    "TARJETA_CREDITO": {
+        "PRODUCTO_TITULO": "Tarjetas de Crédito",
+        "PRODUCTO_SUB_TITULO": "Tarjeta de Crédito",
+        "DESCRIPCION_CUPO": "Cupo disponible",
+        "DESCRIPCION_FECHA_CORTE": "Fecha corte :",
+
+        "DESCRIPCION_PAGO_PESOS": "Pago total en pesos",
+        "DESCRIPCION_CUPO_DISP_AVANCES": "Cupo disponible en pesos",
+        "DESCRIPCION_SALDO_MORA_PESOS": "Valor mora en pesos",
+        "DESCRIPCION_SALDO_ACTUAL": "SaLdo actual",
+        "DESCRIPCION_CUPO_COMPRAS_PESOS": "Cupo disponible compras en pesos",
+        "DESCRIPCION_VALOR_PAGO_MINIMO": "Valor pago mínimo",
+        "DESCRIPCION_CUPO_TOTAL": "Cupo total",
+        "DESCRIPCION_FECHA_VENCIMIENTO": "Fecha vencimiento",
+        "DESCRIPCION_FECHA_PAGO": "Fecha de pago",
+        "DESCRIPCION_TOTAL_GASTADO": "Total Gastado"
+    },
+    "PRODUCTOS": {
+        "FECHA_ACTUAL": "Fecha de ingreso"
+    },
+    "VER_DETALLE": "Ver detalle >"
+}

@@ -1,0 +1,70 @@
+<div class="col-md-12" *ngIf="activarCdt">
+    <h3 class="card-title">{{'CDT.PRODUCTO_TITULO' | translate}}</h3>
+</div>
+<div class="col-md-4" *ngFor="let cdt of cdts">
+    <div class="card card-chart">
+        <div class="col-md-12">
+            <img class="img-raised cdt-img" src="../../../../assets/img/logos/cdt.png" alt="">
+        </div>
+
+        <div class="col-md-12 p-4">
+            <a (click)="verDetalle(cdt)" class="cursor">{{'VER_DETALLE' | translate}} </a>
+        </div>
+        <div class="p-4">
+            <h4 class="card-title">{{'CDT.PRODUCTO_SUB_TITULO' | translate}}</h4>
+            Nro. {{cdt.accountInformation.accountidentifier}}
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">{{'CDT.DESCRIPCION_VALOR' | translate}} </h4>
+            <p class="card-category">
+                {{cdt.productAccountBalances.valor_constitucion.amount | currency}}</p>
+            <h4 class="card-title">{{'CDT.DESCRIPCION_PLAZO' | translate}}</h4>
+            <p class="card-category">
+                {{cdt.periodicityOfPayment.count}} {{'CDT.DESCRIPCION_UNIDAD' | translate}}</p>
+        </div>
+        <div class="card-footer">
+            <div class="stats">
+                <i class="material-icons">access_time</i> {{'CDT.DESCRIPCION_FECHA_VENCIMIENTO' | translate}} {{cdt.closedDate | date}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalDetalle let-e="close">
+    <div class="modal-header">
+        <h4 class="modal-title">
+            <div class="col-md-12">
+                <img class="img-raised img-modal" src="../../../../assets/img/logos/cdt.png" alt="">
+            </div>
+        </h4>
+        <button type="button" class="close" aria-label="Close" (click)="e('Cerrar')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    <div class="modal-body">
+        <div class="p-4">
+            <h4 class="card-title">{{'CDT.PRODUCTO_SUB_TITULO' | translate}}</h4>
+            Nro. {{detalleCdtModal.accountInformation.accountidentifier}}
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">{{'CDT.DESCRIPCION_VALOR' | translate}} </h4>
+            <p class="card-category">
+                {{detalleCdtModal.productAccountBalances.valor_constitucion.amount | currency}}</p>
+            <h4 class="card-title">{{'CDT.DESCRIPCION_PLAZO' | translate}}</h4>
+            <p class="card-category">
+                {{detalleCdtModal.periodicityOfPayment.count}} {{'CDT.DESCRIPCION_UNIDAD' | translate}}</p>
+            <h4 class="card-title">{{'CDT.DESCRIPCION_SALDO_PENDIENTE' | translate}}</h4>
+            <p class="card-category">
+                {{detalleCdtModal.productAccountBalances.saldo_pendiente_pago.amount | currency }} </p>
+            <h4 class="card-title">{{'CDT.DESCRIPCION_TASA' | translate}}</h4>
+            <p class="card-category">
+                {{detalleCdtModal.productAccountBalances.tasa_nominal.amount | currency}} </p>
+            <h4 class="card-title">{{'CDT.DESCRIPCION_INTERES' | translate}}</h4>
+            <p class="card-category">
+                {{detalleCdtModal.productAccountBalances.intereses_causados.amount | currency}} </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        {{'CDT.DESCRIPCION_FECHA_VENCIMIENTO' | translate}} {{detalleCdtModal.closedDate | date}}
+    </div>
+</ng-template>
